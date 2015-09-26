@@ -27,3 +27,5 @@ end
 group :production do
   gem 'rails_12factor'
 end
+
+gem "smart_listing"         # colluciton listings with search and in-place edit

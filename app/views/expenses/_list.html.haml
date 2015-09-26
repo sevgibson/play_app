@@ -1,0 +1,19 @@
+%table.table.table-striped
+  %thead
+    %th.col-md-3= smart_listing.sortable "Date", "expense_date"
+    %th.col-md-3= smart_listing.sortable "Payee", "payee"
+    %th.col-md-3= "Expense Type"
+    %th.col-md-4= "Description"
+    %th.col-md-4= "Amount"
+    %th "Actions"
+  %tbody
+    - smart_listing.collection.each do |o|
+      %tr.editable{data: {id: o.id}}
+        -# Render user row partial
+        = smart_listing.render object: o, partial: "expenses/item", locals: {object: o}
+
+    -# Render nice "new item" button fitted for Bootstrap 3 by default
+    = smart_listing.item_new colspan: 6, link: new_expense_path
+
+= smart_listing.paginate
+= smart_listing.pagination_per_page_links

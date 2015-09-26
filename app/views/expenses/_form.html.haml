@@ -1,0 +1,20 @@
+%td{colspan: 6}
+  = form_for object, remote: true, html: {class: "form-horizontal"} do |f|
+
+    = f.label :expense_date
+    = f.date_field :expense_date
+    %br
+    = f.label :payee
+    = f.text_field :payee
+    %br
+    = f.label :expense_type_id
+    = f.select :expense_type_id, options_for_select(find_expense_types.map{|et| [et.name,et.id]})
+    %br
+    = f.label :description
+    = f.text_field :description
+    %br
+    = f.label :amount
+    = f.text_field :amount
+    %br
+    = f.submit "Save", class: "btn btn-primary"
+    %button.btn.btn-link.cancel Cancel
