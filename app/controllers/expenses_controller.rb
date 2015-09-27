@@ -1,4 +1,5 @@
 class ExpensesController < ApplicationController
+  http_basic_authenticate_with name: ENV['USER'], password: ENV['PASSWORD']
   include SmartListing::Helper::ControllerExtensions
   before_filter :find_expense, except: [:index, :new, :create]
   def smart_listing_resource
