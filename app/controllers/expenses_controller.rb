@@ -22,14 +22,18 @@ class ExpensesController < ApplicationController
   end
 
   def create
-    @expense = Expense.create(expense_params)
+    attrs = expense_params
+    attrs[:expense_date] = Date.strptime(attrs[:expense_date], '%m/%d/%Y') if attrs[:expense_date]
+    @expense = Expense.create(attrs)
   end
 
   def edit
   end
 
   def update
-    @expense.update_attributes(expense_params)
+    attrs = expense_params
+    attrs[:expense_date] = Date.strptime(attrs[:expense_date], '%m/%d/%Y') if attrs[:expense_date]
+    @expense.update_attributes(attrs)
   end
 
   def destroy
@@ -43,7 +47,7 @@ class ExpensesController < ApplicationController
   end
 
   def expense_params
-    params.require(:expense).permit(:expense_date, :payee, :expense_type_id,
-                                    :description, :amount)
+    params.require(:expense).permit(:expense_date, :purpose, :expense_type_id,
+      :memo, :amount)
   end
 end

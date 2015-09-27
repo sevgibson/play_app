@@ -1,7 +1,7 @@
-%td= object.expense_date
-%td= object.payee
+%td= object.expense_date.try(:strftime,'%m/%d/%Y')
+%td= object.purpose
 %td= object.expense_type.try(:name) || '<no type>'
-%td= object.description
+%td= object.memo
 %td= object.amount
 %td.actions= smart_listing_item_actions [ {name: :edit,    url: edit_expense_path(object)},
                                           {name: :destroy, url: expense_path(object),
