@@ -30,3 +30,4 @@ end
 
 gem "smart_listing"         # colluciton listings with search and in-place edit
 gem 'bootstrap-datepicker-rails'
+gem 'dotenv-rails', :groups => [:development, :test]
